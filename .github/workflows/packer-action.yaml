@@ -1,0 +1,31 @@
+---
+name: Packer
+
+on:
+  push:
+
+jobs:
+  packer:
+    runs-on: ubuntu-latest
+    name: Packer
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # validate templates
+      - name: Validate Templates
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          arguments: -var-file=ubuntu2004.pkrvars.hcl -var-file=ubuntu2204.pkrvars.hcl
+          target: .
+
+      # format templates
+      - name: Format Templates
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: fmt
+          target: .
+
+      
