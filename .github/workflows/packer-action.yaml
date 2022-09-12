@@ -19,13 +19,13 @@ jobs:
         with:
           command: validate
           arguments: -var-file=ubuntu2004.pkrvars.hcl -var-file=ubuntu2204.pkrvars.hcl
-          target: .
+          target: packer/
 
       # format templates
       - name: Format Templates
         uses: hashicorp/packer-github-actions@master
         with:
           command: fmt
-          target: .
+          target: packer/
 
       
