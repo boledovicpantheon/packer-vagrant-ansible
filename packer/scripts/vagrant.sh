@@ -1,13 +1,9 @@
 #!/bin/bash -eu
 
-#SSH_USER="vagrant"
-#SSH_PASS="vagrant"
-#SSH_USER_HOME="/home/${SSH_USER}"
-
+# Variables
 SSH_USER=${SSH_USERNAME:-vagrant}
 SSH_PASS=${SSH_PASSWORD:-vagrant}
 SSH_USER_HOME=${SSH_USER_HOME:-/home/${SSH_USER}}
-
 
 # Create Vagrant user (if not already present)
 if ! id -u $SSH_USER > /dev/null 2>&1; then
@@ -31,6 +27,6 @@ chmod 600 ${SSH_USER_HOME}/.ssh/authorized_keys
 chown -R ${SSH_USER}:${SSH_USER} ${SSH_USER_HOME}/.ssh
 
 # remove unattended upgrades
-systemctl stop unattended-upgrades 
-systemctl disable unattended-upgrades 
-apt-get remove -y unattended-upgrades
+# systemctl stop unattended-upgrades 
+# systemctl disable unattended-upgrades 
+# apt-get remove -y unattended-upgrades

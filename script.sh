@@ -4,7 +4,7 @@ do
   read -p "
   1. Run packer to build template with Ubuntu 22.04
   2. Run packer to build template with Ubuntu 20.04
-  3. Run vagrant to install and configure templates with ansible
+  3. Run 'vagrant up' to install and configure templates with ansible
   4. Exit
 
   You can choose multiple options, just separate them with space!
@@ -25,7 +25,7 @@ do
         packer build --var-file ubuntu2004.pkrvars.hcl ubuntu-base.pkr.hcl && \
         cd ..;;
       3)
-        vagrant up;;
+        vagrant up --provision;;
       4)
         exit;;
       *)

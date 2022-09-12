@@ -5,10 +5,10 @@
 
 Vagrant.configure("2") do |config|
 
-### Variables
+# Variables
   vagrant_box_dir = "box"
 
-### Global config
+# Global config
   config.vbguest.no_install = false
   config.vbguest.auto_update = false # if true, vagrant fails on `umount /mnt`, need to figure out
   config.vbguest.no_remote = true
@@ -18,24 +18,13 @@ Vagrant.configure("2") do |config|
   
   config.vm.box_check_update = true
 
-### Plugins
+# Plugins
   if Vagrant.has_plugin?("vagrant-hostmanager")
     config.hostmanager.enabled = true
     config.hostmanager.manage_host = true
   end
 
-  ### Ansible
-  config.vm.provision "ansible_local" do |ansible|
-    ansible.provisioning_path = "/vagrant"
-    ansible.playbook = "ansible/site.yml"
-    ansible.inventory_path = "ansible/inventory/"
-    ansible.limit = "all"
-    ansible.compatibility_mode = "auto"
-    ansible.become = "true" #sudo 
-    ansible.verbose = "true" # same as `-v`
-  end
-
-### VM no.1
+# VM no.1
   config.vm.define "ubuntu_focal" do |flavor|
     # Path to the `.box` file
     flavor.vm.box = "#{vagrant_box_dir}/packer_ubuntu-server-20.04.box"
@@ -55,7 +44,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-### VM no.2
+# VM no.2
   config.vm.define "ubuntu_jammy" do |flavor|
     # Path to the `.box` file
     flavor.vm.box = "#{vagrant_box_dir}/packer_ubuntu-server-22.04.box"
@@ -74,4 +63,20 @@ Vagrant.configure("2") do |config|
       vb.customize ["modifyvm", :id, "--ostype", "ubuntu_64"]  
     end
   end
+
+# Ansible
+  config.vm.provision "ansible_local" do |ansible|
+    # ansible.provisioning_path = "/vagrant"
+    ansible.playbook = "ansible/site.yml"
+    ansible.inventory_path = "ansible/inventory/"
+    ansible.limit = "all"
+    ansible.compatibility_mode = "auto"
+    ansible.become = "true" #sudo 
+    ansible.verbose = "true" # same as `-v`
+  end
+
+# Shutdown
+  config.vm.provision "shell",
+    inline: "poweroff"
+
 end

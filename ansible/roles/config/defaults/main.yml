@@ -1,5 +1,9 @@
 ---
 packages:
+  - "python3-apt"
+  - "python3-pip"
+  - "python3-dev"
+  - "python3-virtualenv"
   - "curl"
   - "git"
   - "openvpn"
@@ -9,9 +13,6 @@ packages:
   - "wget"
   - "xsel"
   - "build-essential"
-  - "python3-dev"
-  - "python3-pip"
-  - "python3-virtualenv"
 
 pip_packages:
   - "docker-compose"
