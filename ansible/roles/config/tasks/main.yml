@@ -1,0 +1,13 @@
+---
+
+- name: Install packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: "present"
+  loop: "{{ packages }}" # in defaults
+
+- name: Install pip packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    executable: "pip3"
+  loop: "{{ pip_packages }}" # in defaults

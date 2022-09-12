@@ -1,0 +1,9 @@
+---
+- hosts: vagrant
+  connection: local
+  become_user: root
+  become: true
+  gather_facts: true
+
+  roles:
+    - { role: 'config', tags: 'config' }
