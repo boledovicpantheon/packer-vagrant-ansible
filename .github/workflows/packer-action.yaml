@@ -7,7 +7,7 @@ on:
 jobs:
   packer:
     runs-on: ubuntu-latest
-    name: Packer
+    name: Packer Action
 
     steps:
       - name: Checkout Repository
@@ -18,7 +18,7 @@ jobs:
         uses: hashicorp/packer-github-actions@master
         with:
           command: validate
-          arguments: -var-file=ubuntu2004.pkrvars.hcl -var-file=ubuntu2204.pkrvars.hcl
+          arguments: -var-file=packer/ubuntu2004.pkrvars.hcl -var-file=packer/ubuntu2204.pkrvars.hcl
           target: packer/
 
       # format templates
