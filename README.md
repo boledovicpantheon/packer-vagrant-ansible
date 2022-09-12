@@ -6,11 +6,14 @@
 
 ## Prequisities:
 
-#### Packer (tested on 1.8.3)
+#### Packer 
+(tested on 1.8.3)
 
-#### Vagrant (tested on 2.3.0)
+#### Vagrant 
+(tested on 2.3.0)
 
-#### Ansible (tested on core 2.12.7)
+#### Ansible 
+(tested on core 2.12.7)
 
 ### Vagrant prequisities:
 

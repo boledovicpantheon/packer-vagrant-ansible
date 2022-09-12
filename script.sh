@@ -14,7 +14,6 @@ do
 
   for i in "${stringarray[@]}"
   do
-
     case $i in
       1)
         cd packer && \
@@ -31,6 +30,5 @@ do
       *)
         echo "Error: This option is not available, choose from given ones. ";;
     esac
-
   done
 done
